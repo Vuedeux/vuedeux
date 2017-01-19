@@ -58,6 +58,8 @@
 ////////////SCRIPT
 
 <script>
+import reduxstore from '../store/reduxstore'
+
 import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
 // console.log("Looking for state prop", this.$store)
@@ -74,11 +76,15 @@ export default {
   data () {
     return {
       visibility: 'all',
-      filters: filters
+      filters: filters,
+      reduxtodos: this.$select('todos')
+
     }
   },
   computed: {
     todos () {
+      console.log("Entire redux Store", reduxstore)
+      console.log("REDUX TODOS", this.reduxtodos)
       return this.$store.state.todos
     },
     allChecked () {
