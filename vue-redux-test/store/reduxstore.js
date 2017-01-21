@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Revue from 'revue'
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
-import reducer from './reduxreducers'
+import {reducer, STORAGE_KEY} from './reduxreducers'
 import * as actions from './reduxactions'
 
 // const persistedState = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)) : {}
@@ -11,9 +11,10 @@ import * as actions from './reduxactions'
 const reduxStore = createStore(reducer, applyMiddleware(thunk));
 const store = new Revue(Vue, reduxStore, actions)
 
-// store.subscribe(()=>{
-//   localStorage.setItem(STORAGE_KEY, JSON.stringify(store.getState()))
-// })
+reduxStore.subscribe(()=>{
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(reduxStore.getState().todos.todos))
+	console.log("REDUX STORE STATE: ", reduxStore.getState().todos.todos);
+})
 
 console.log("I'm in your redux store. Here are your actions", actions)
 // If in dev mode we set a local memory store to store?
