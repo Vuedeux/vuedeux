@@ -1,4 +1,4 @@
-export const STORAGE_KEY = 'todos-David-VUE/REDUX'
+export const STORAGE_KEY = 'todos-David-VUE/VUEX'
 
 // for testing
 // if (navigator.userAgent.indexOf('PhantomJS') > -1) {

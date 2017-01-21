@@ -14,5 +14,5 @@ let app = new Vue({
   //   greet: 'Hello Vue!',
   // },
   // Render overwrites the template syntax of  {{greet}} on index.html
-  render: h => h(App),
+  render: createElement => createElement(App),
 });

@@ -1,30 +1,39 @@
 import { combineReducers } from 'redux'
 
+
 const defaultTodos = [
   {
-    text: 'Rule the web',
+    text: 'Butts',
     done: true
   },
   {
-    text: 'Conquer the world',
+    text: 'Conquer',
     done: false
   },
   {
-    text: 'Meet a girl',
+    text: 'Meet',
     done: false
   }
 ]
 
+
+export const STORAGE_KEY = 'todos-David-VUE/REDUX'
+
+// // PULL STATE from local storage using Storage Key
+// export const state = {
+//   todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+// }
+
 // BELOW REDUCERS
 let todos = function todos(state = {
   isPosting: false,
-  items: defaultTodos
+  todos: defaultTodos
 }, action) {
   switch (action.type) {
     case 'ADDED_TODO':
       return Object.assign({}, state, {
         isPosting: false,
-        items: state.items.concat([{ text: action.text, done: false }])
+        items: state.todos.push({ text: action.text, done: false })
       })
     case 'ADDING_TODO':
       return Object.assign({}, state, {
@@ -32,7 +41,7 @@ let todos = function todos(state = {
       })
     case 'TOGGLE_TODO':
       return Object.assign({}, state, {
-        items: state.items.map((todo, i) => {
+        items: state.todos.map((todo, i) => {
           if (i === action.index) {
             return {
               text: todo.text,
