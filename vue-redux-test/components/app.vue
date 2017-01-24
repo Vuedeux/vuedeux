@@ -11,7 +11,7 @@
         autofocus
         autocomplete="off"
         placeholder="What needs to be done?"
-        @keyup.enter="addTodo">
+        v-on:keyup.enter="addTodo">
     </header>
     <!-- main section -->
      <!-- v-show used for conditional display, if 0 todos wont render -->
@@ -26,6 +26,7 @@
         <todo v-for="todo in filteredTodos" :todo="todo"></todo>
       </ul>
     </section>
+  
     <!-- footer -->
     <footer class="footer" v-show="todos.length">
       <span class="todo-count">
@@ -58,11 +59,11 @@
 ////////////SCRIPT
 
 <script>
-import reduxstore from '../store/reduxstore'
-
+import {reduxStore} from '../store/reduxstore'
 import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
-// console.log("Looking for state prop", this.$store)
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/reduxactions'
 
 const filters = {
   all: todos => todos,
@@ -75,17 +76,28 @@ export default {
   name: "Todo-List",
   data () {
     return {
+      // reduxStore,
+      // reduxActions: bindActionCreators(actionCreators, reduxStore.dispatch),
+      // reduxActions: actionCreators,
       visibility: 'all',
       filters: filters,
-      reduxtodos: this.$select('todos')
 
+      // todos: this.$select('todos.todos as todos')
     }
   },
   computed: {
     todos () {
-      console.log("Entire redux Store", reduxstore)
-      console.log("REDUX TODOS", this.reduxtodos)
-      return this.$store.state.todos
+      console.log("THIS from within computed", this)
+      console.log("Action Creatores", actionCreators)
+      // console.log("REDUX TODOS", this.$select('todos'))
+      console.log("VUEX/REDUX MODULE TODOS", this.$store.state.redux)
+      // REDUX : COMPUTE NEW TODO ITEMS  // Won't be reactive in this case
+      // return this.$select('todos.todos as todos')
+     
+      // VUEX GLOBAL: COMPUTE NEW TODO ITEMS
+      // return this.$store.state.todos
+      // VUEX REDUX MODULE: SHOW TODO FROM REDUX MODULE
+      return this.$store.state.redux.todos
     },
     allChecked () {
       return this.todos.every(todo => todo.done)
@@ -101,7 +113,16 @@ export default {
     addTodo (e) {
       var text = e.target.value
       if (text.trim()) {
-        this.$store.commit('addTodo', { text })
+        // VUEX: adding todos
+        // this.$store.commit('addTodo', { text })
+       
+       // REDUX : adding todos
+       // the arguments resolves to a function definition that dispatches two events
+       // uses THUNK middleware for async
+        // this.$store.dispatch(this.$store._actions.addTodo[0](text))
+        // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
+        console.log(this.$store.state.redux)
+        this.$store.commit(this.$root.reduxActions.addedTodo(text))
       }
       e.target.value = ''
     },

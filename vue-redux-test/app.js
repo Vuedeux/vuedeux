@@ -2,6 +2,9 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import store from './store'
 import App from './components/App.vue'
+// import{reduxStore} from './store/reduxstore'
+import * as actionCreators from './store/reduxactions'
+
 
 let app = new Vue({
   // provide the store using the "store" option.
@@ -10,9 +13,10 @@ let app = new Vue({
   name: "app",
   store,
   el: '#app',
-  // data: {
-  //   greet: 'Hello Vue!',
-  // },
+  data: {
+    reduxActions: actionCreators,
+    // reduxStore
+  },
   // Render overwrites the template syntax of  {{greet}} on index.html
-  render: h => h(App),
+  render: createElement => createElement(App),
 });
