@@ -11,7 +11,6 @@ export const initstate = {
 let todos = function todos(state = initstate, action) {
   switch (action.type) {
     case 'ADDED_TODO':
-      console.log("THIS IS WHAT THE REDUCER RECEIVES: ", state, action)
       return Object.assign({}, state, {
         isPosting: false,
         items: initstate.todos.push({ text: action.text, done: false })

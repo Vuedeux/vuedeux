@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 import Vuex from 'vuex';
 import { state, mutations } from './mutations';
-import plugins from './plugins';
+import {localStoragePlugin, createModule} from './plugins';
 import reduxMutations from './reduxmutations';
 import{reduxStore} from './reduxstore';
 import { bindActionCreators } from 'redux';
@@ -27,7 +27,7 @@ const vuex = new Vuex.Store({
  modules:{
     redux
   },
-  plugins,
+  plugins: [localStoragePlugin, createModule]
 });
 
 console.log("Vuex Store: ", vuex)

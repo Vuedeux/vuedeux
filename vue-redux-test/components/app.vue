@@ -76,9 +76,9 @@ export default {
   name: "Todo-List",
   data () {
     return {
-      reduxStore,
+      // reduxStore,
       // reduxActions: bindActionCreators(actionCreators, reduxStore.dispatch),
-      reduxActions: actionCreators,
+      // reduxActions: actionCreators,
       visibility: 'all',
       filters: filters,
 
@@ -89,7 +89,6 @@ export default {
     todos () {
       console.log("THIS from within computed", this)
       console.log("Action Creatores", actionCreators)
-      console.log("Redux store", reduxStore)
       // console.log("REDUX TODOS", this.$select('todos'))
       console.log("VUEX/REDUX MODULE TODOS", this.$store.state.redux)
       // REDUX : COMPUTE NEW TODO ITEMS  // Won't be reactive in this case
@@ -123,8 +122,7 @@ export default {
         // this.$store.dispatch(this.$store._actions.addTodo[0](text))
         // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
         console.log(this.$store.state.redux)
-        console.log("Does this look like an action object", this.reduxActions.addedTodo(text))
-        this.$store.commit(this.reduxActions.addedTodo(text))
+        this.$store.commit(this.$root.reduxActions.addedTodo(text))
       }
       e.target.value = ''
     },
