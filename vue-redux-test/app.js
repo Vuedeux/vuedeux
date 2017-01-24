@@ -2,7 +2,10 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import store from './store'
 import App from './components/App.vue'
+import{reduxStore} from './store/reduxstore'
 
+
+console.log("WHAT AM I", store);
 let app = new Vue({
   // provide the store using the "store" option.
   // this will inject the store instance to all child components 
@@ -10,9 +13,10 @@ let app = new Vue({
   name: "app",
   store,
   el: '#app',
-  // data: {
-  //   greet: 'Hello Vue!',
-  // },
+  data: {
+    BEEFSAUCE : "HIHIHIH",
+    reduxStore
+  },
   // Render overwrites the template syntax of  {{greet}} on index.html
   render: createElement => createElement(App),
 });

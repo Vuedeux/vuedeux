@@ -1,5 +1,7 @@
 export const STORAGE_KEY = 'todos-David-VUE/VUEX'
 
+
+
 // for testing
 // if (navigator.userAgent.indexOf('PhantomJS') > -1) {
 //   window.localStorage.clear()
@@ -10,15 +12,16 @@ export const state = {
   todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 }
 
-export const mutations = {
-  addTodo (state, { text }) {
-    state.todos.push({
-      text,
-      done: false
-    })
-  },
+const mutations = {
+  // addTodo (state, { text }) {
+  //   state.todos.push({
+  //     text,
+  //     done: false
+  //   })
+  // },
 
   deleteTodo (state, { todo }) {
+    console.log("DELETE:", state, todo)
     state.todos.splice(state.todos.indexOf(todo), 1)
   },
 
@@ -39,4 +42,7 @@ export const mutations = {
   clearCompleted (state) {
     state.todos = state.todos.filter(todo => !todo.done)
   }
+
 }
+
+export default mutations;

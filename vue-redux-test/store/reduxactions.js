@@ -25,17 +25,19 @@ export function toggleTodo (index) {
   }
 }
 
-export function addTodo (text) {
-  // you can dispatch a ADDING_TODO action here
-  return (dispatch, getState) => {
-    dispatch(addingTodo())
-    dispatch(addedTodo(text))
-    // the following line is always an async ajax call, like:
-    // return fetch().then().then(data => dispatch(addedTodo(data)))
-    // here we use setTimeout to fake one
-    setTimeout(() => {
-      // dispatch(addedTodo(text))
-      console.log("I'm dispatching")
-    }, 1000)
-  }
-}
+
+// THIS IS A THUNK
+// export function addTodo (text) {
+//   // you can dispatch a ADDING_TODO action here
+//   return (dispatch, getState) => {
+//     dispatch(addingTodo())
+//     dispatch(addedTodo(text))
+//     // the following line is always an async ajax call, like:
+//     // return fetch().then().then(data => dispatch(addedTodo(data)))
+//     // here we use setTimeout to fake one
+//     setTimeout(() => {
+//       // dispatch(addedTodo(text))
+//       console.log("I'm dispatching")
+//     }, 1000)
+//   }
+// }

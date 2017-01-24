@@ -59,10 +59,11 @@
 ////////////SCRIPT
 
 <script>
-import reduxstore from '../store/reduxstore'
+import {reduxStore} from '../store/reduxstore'
 import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
-// console.log("Looking for state prop", this.$store)
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../store/reduxactions'
 
 const filters = {
   all: todos => todos,
@@ -75,21 +76,30 @@ export default {
   name: "Todo-List",
   data () {
     return {
+      reduxStore,
+      // reduxActions: bindActionCreators(actionCreators, reduxStore.dispatch),
+      reduxActions: actionCreators,
       visibility: 'all',
       filters: filters,
-      todos: this.$select('todos.todos as todos')
+
+      // todos: this.$select('todos.todos as todos')
     }
   },
   computed: {
-    // todos () {
-    //   console.log("REDUX TODOS", this.$select('todos').todos)
-    //   console.log("VUEX TODOS", this.$store.state.todos)
-    //   // REDUX : COMPUTE NEW TODO ITEMS  // Wont be reactive in this case
-    //   // return this.$select('todos.todos as todos')
+    todos () {
+      console.log("THIS from within computed", this)
+      console.log("Action Creatores", actionCreators)
+      console.log("Redux store", reduxStore)
+      // console.log("REDUX TODOS", this.$select('todos'))
+      console.log("VUEX/REDUX MODULE TODOS", this.$store.state.redux)
+      // REDUX : COMPUTE NEW TODO ITEMS  // Won't be reactive in this case
+      // return this.$select('todos.todos as todos')
      
-    //   // VUEX : COMPUTE NEW TODO ITEMS
-    //   // return this.$store.state.todos
-    // },
+      // VUEX GLOBAL: COMPUTE NEW TODO ITEMS
+      // return this.$store.state.todos
+      // VUEX REDUX MODULE: SHOW TODO FROM REDUX MODULE
+      return this.$store.state.redux.todos
+    },
     allChecked () {
       return this.todos.every(todo => todo.done)
     },
@@ -110,8 +120,11 @@ export default {
        // REDUX : adding todos
        // the arguments resolves to a function definition that dispatches two events
        // uses THUNK middleware for async
-        reduxstore.dispatch(reduxstore.actions.addTodo(text))
-       
+        // this.$store.dispatch(this.$store._actions.addTodo[0](text))
+        // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
+        console.log(this.$store.state.redux)
+        console.log("Does this look like an action object", this.reduxActions.addedTodo(text))
+        this.$store.commit(this.reduxActions.addedTodo(text))
       }
       e.target.value = ''
     },

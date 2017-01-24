@@ -6,12 +6,12 @@ export const STORAGE_KEY = 'todos-David-VUE/REDUX'
 export const initstate = {
   todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 }
-console.log("INIT STATE: ", initstate)
 
 // BELOW REDUCERS
 let todos = function todos(state = initstate, action) {
   switch (action.type) {
     case 'ADDED_TODO':
+      console.log("THIS IS WHAT THE REDUCER RECEIVES: ", state, action)
       return Object.assign({}, state, {
         isPosting: false,
         items: initstate.todos.push({ text: action.text, done: false })
@@ -37,7 +37,11 @@ let todos = function todos(state = initstate, action) {
   }
 }
 
-export const reducer =  combineReducers({
-  todos,
-})
+export const reducer =  todos;
+
+//If I had multiple reducers controling part of state
+// combineReducers({
+//   todos,
+//   ... 
+// })
 
