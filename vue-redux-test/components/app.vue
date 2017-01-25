@@ -6,8 +6,8 @@
     <!-- header -->
       <!--@keyup.enter="addTodo" is shorthand for v-on:keyup.enter='addTodo'-->
     <header class="header">
-      <img src= '../assets/vuedeuxsmall.png'>
-      <p id='header'> Vuedeux TodoMVC</p>
+      <img style='margin: 10px' src= '../assets/vuedeuxsmall.png'>
+      <p id='header' style='padding-left: 50px; margin-top: -75px; margin-left: 30px'> Vuedeux TodoMVC</p>
       <input class="new-todo"
         autofocus
         autocomplete="off"
@@ -152,7 +152,7 @@ export default {
     background-color: #42B983 !important;
   }
   #header {
-    display: inline;
+    /*display: inline;*/
     text-align: center;
     font-size: 3em;
   }
