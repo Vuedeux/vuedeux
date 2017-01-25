@@ -87,10 +87,10 @@ export default {
   },
   computed: {
     todos () {
-      console.log("THIS from within computed", this)
-      console.log("Action Creatores", actionCreators)
+      console.log("THIS from within App.vue", this)
+      console.log("Action Creators", actionCreators)
       // console.log("REDUX TODOS", this.$select('todos'))
-      console.log("VUEX/REDUX MODULE TODOS", this.$store.state.redux)
+      console.log("Vue.$store.state.redux: ", this.$store.state.redux)
       // REDUX : COMPUTE NEW TODO ITEMS  // Won't be reactive in this case
       // return this.$select('todos.todos as todos')
      
@@ -114,14 +114,13 @@ export default {
       var text = e.target.value
       if (text.trim()) {
         // VUEX: adding todos
-        // this.$store.commit('addTodo', { text })
+        this.$store.commit('addTodo', { text })
        
        // REDUX : adding todos
        // the arguments resolves to a function definition that dispatches two events
        // uses THUNK middleware for async
         // this.$store.dispatch(this.$store._actions.addTodo[0](text))
         // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
-        console.log(this.$store.state.redux)
         this.$store.commit(this.$root.reduxActions.addedTodo(text))
       }
       e.target.value = ''
