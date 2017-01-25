@@ -97,7 +97,7 @@ export default {
       // VUEX GLOBAL: COMPUTE NEW TODO ITEMS
       // return this.$store.state.todos
       // VUEX REDUX MODULE: SHOW TODO FROM REDUX MODULE
-      return this.$store.state.redux.todos
+      return this.$store.state.redux.todos.todos
     },
     allChecked () {
       return this.todos.every(todo => todo.done)
@@ -114,23 +114,23 @@ export default {
       var text = e.target.value
       if (text.trim()) {
         // VUEX: adding todos
-        this.$store.commit('addTodo', { text })
+        // this.$store.commit('addTodo', { text })
        
        // REDUX : adding todos
        // the arguments resolves to a function definition that dispatches two events
        // uses THUNK middleware for async
         // this.$store.dispatch(this.$store._actions.addTodo[0](text))
         // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
-        this.$store.commit(this.$root.reduxActions.addedTodo(text))
+        this.$store.commit(this.$root.reduxActions.addTodo(text))
       }
       e.target.value = ''
     },
 
     // map mutations  this.$store.commit('toggleAll') to this.toggleAll
-    ...mapMutations([
-      'toggleAll',
-      'clearCompleted'
-    ])
+    ...mapMutations({
+      toggleAll: 'COMPLETE_ALL',
+      clearCompleted: 'CLEAR_COMPLETED'
+    })
   },
   filters: {
     pluralize: (n, w) => n === 1 ? w : (w + 's'),

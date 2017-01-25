@@ -18,7 +18,6 @@ const redux = {
   // actions: bindActionCreators(reduxactions, reduxStore.dispatch),
 }
 
-
 //VUEX Module copying Redux
 const vuex = new Vuex.Store({
  state,

@@ -41,11 +41,11 @@ export default {
     }
   },
   methods: {
-    ...mapMutations([
-      'editTodo',
-      'toggleTodo',
-      'deleteTodo'
-    ]),
+    ...mapMutations({
+      editTodo: 'EDIT_TODO',
+      toggleTodo: 'COMPLETE_TODO',
+      deleteTodo: 'DELETE_TODO'
+    }),
     doneEdit (e) {
       console.log("THIS FROM WITHIN TODO: ", this);
       const value = e.target.value.trim()
