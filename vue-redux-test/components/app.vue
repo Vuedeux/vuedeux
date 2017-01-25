@@ -6,7 +6,8 @@
     <!-- header -->
       <!--@keyup.enter="addTodo" is shorthand for v-on:keyup.enter='addTodo'-->
     <header class="header">
-      <h1>todos</h1>
+      <img src= '../assets/vuedeuxsmall.png'>
+      <p id='header'> Vuedeux TodoMVC</p>
       <input class="new-todo"
         autofocus
         autocomplete="off"
@@ -64,6 +65,8 @@ import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../store/reduxactions'
+import 'todomvc-app-css/index.css'
+
 
 const filters = {
   all: todos => todos,
@@ -97,7 +100,7 @@ export default {
       // VUEX GLOBAL: COMPUTE NEW TODO ITEMS
       // return this.$store.state.todos
       // VUEX REDUX MODULE: SHOW TODO FROM REDUX MODULE
-      return this.$store.state.redux.todos.todos
+      return this.$store.state.redux.todos
     },
     allChecked () {
       return this.todos.every(todo => todo.done)
@@ -121,6 +124,7 @@ export default {
        // uses THUNK middleware for async
         // this.$store.dispatch(this.$store._actions.addTodo[0](text))
         // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
+        console.log("1. addTodo method fired")
         this.$store.commit(this.$root.reduxActions.addTodo(text))
       }
       e.target.value = ''
@@ -142,6 +146,14 @@ export default {
 </script>
 
 ////////////STYLING
+<style src="todomvc-app-css/index.css"></style>
 <style>
-
+  body{
+    background-color: #42B983 !important;
+  }
+  #header {
+    display: inline;
+    text-align: center;
+    font-size: 3em;
+  }
 </style>

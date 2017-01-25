@@ -9,51 +9,48 @@ export const STORAGE_KEY = 'todos-David-VUE/REDUX'
 //   todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
 // }
 
-export const initstate = {
-  todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
-}
+export const initstate = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || {todos:[]};
+
 
 export default function todos(state = initstate , action) {
-  console.log("State within Switch", state)
+  console.log("3. 4. Mutation triggered dispatch to reducer with the following state and action", state, action)
   switch (action.type) {
     case ADD_TODO:
-      return [
+      return {todos:[
         {
           id: state.todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-          completed: false,
+          done: false,
           text: action.text
         },
         ...state.todos
-      ]
+      ]}
 
     case DELETE_TODO:
-      return state.todos.filter(todo =>
-        todo.id !== action.id
-      )
+      return {todos: state.todos.filter(todo =>
+        todo.id !== action.todo.id
+      )}
 
     case EDIT_TODO:
-      return state.todos.map(todo =>
-        todo.id === action.id ?
+      return {todos: state.todos.map(todo =>
+        todo.id === action.todo.id ?
           { ...todo, text: action.text } :
           todo
-      )
+      )}
 
     case COMPLETE_TODO:
-      return state.todos.map(todo =>
-        todo.id === action.id ?
-          { ...todo, completed: !todo.completed } :
-          todo
-      )
+      return {todos: state.todos.map(todo => {
+        return todo.id === action.todo.id ?{ ...todo, done: "working?" } : todo
+      })}
 
     case COMPLETE_ALL:
-      const areAllMarked = state.todos.every(todo => todo.completed)
-      return state.todos.map(todo => ({
+      const areAllMarked = state.todos.every(todo => todo.done)
+      return {todos: state.todos.map(todo => ({
         ...todo,
-        completed: !areAllMarked
-      }))
+        done: !areAllMarked
+      }))}
 
     case CLEAR_COMPLETED:
-      return state.todos.filter(todo => todo.completed === false)
+      return {todos:state.todos.filter(todo => todo.done === false)}
 
     default:
       return state
@@ -61,11 +58,11 @@ export default function todos(state = initstate , action) {
 }
 
 
-// export const reducer =  todos;
+export const reducer =  todos;
 
-//If I had multiple reducers controling part of state
-export const reducer =  combineReducers({
-  todos
-})
+// //If I had multiple reducers controling part of state
+// export const reducer =  combineReducers({
+//   todos
+// })
 
 
