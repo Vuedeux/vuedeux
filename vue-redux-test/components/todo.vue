@@ -47,6 +47,7 @@ export default {
       'deleteTodo'
     ]),
     doneEdit (e) {
+      console.log("THIS FROM WITHIN TODO: ", this);
       const value = e.target.value.trim()
       const { todo } = this
       if (!value) {
