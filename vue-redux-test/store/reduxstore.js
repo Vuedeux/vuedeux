@@ -1,6 +1,6 @@
 import Vue from 'vue'
 // import Revue from 'revue'
-import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import {reducer, STORAGE_KEY} from './reduxreducers'
 // import * as actions from './reduxactions'
@@ -8,13 +8,11 @@ import {reducer, STORAGE_KEY} from './reduxreducers'
 
 // composeEnhancers is enabling the redux dev tools
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  export const reduxStore = createStore(reducer, composeEnhancers(
-    applyMiddleware(thunk)
-  ));
+  export const reduxStore = createStore(reducer, composeEnhancers());
 
 reduxStore.subscribe(()=>{
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reduxStore.getState().todos))
-	console.log("Todos from Redux", reduxStore.getState().todos)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(reduxStore.getState()))
+	console.log("Todos from Redux", reduxStore.getState())
 })
 
 // export const revueStore = new Revue(Vue, reduxStore, actions)

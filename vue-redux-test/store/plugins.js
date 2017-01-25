@@ -8,13 +8,13 @@ export const localStoragePlugin = store => {
   })
 }
 
-export const createModule = store => {
-  console.log("bean?")
-  store.registerModule('bean', {
-    state: {},
-    mutations: {},
-  });
-};
+// export const createModule = store => {
+//   console.log("bean?")
+//   store.registerModule('bean', {
+//     state: {},
+//     mutations: {},
+//   });
+// };
 
 
 

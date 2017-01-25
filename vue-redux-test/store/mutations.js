@@ -39,6 +39,10 @@ export const mutations = {
 
   clearCompleted (state) {
     state.todos = state.todos.filter(todo => !todo.done)
+  },
+
+  ping (state) {
+    console.log('ping')
   }
 
 }

@@ -6,7 +6,8 @@
     <!-- header -->
       <!--@keyup.enter="addTodo" is shorthand for v-on:keyup.enter='addTodo'-->
     <header class="header">
-      <h1>todos</h1>
+      <img src= '../assets/vuedeuxsmall.png'>
+      <p id='header'> Vuedeux TodoMVC</p>
       <input class="new-todo"
         autofocus
         autocomplete="off"
@@ -64,6 +65,8 @@ import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../store/reduxactions'
+import 'todomvc-app-css/index.css'
+
 
 const filters = {
   all: todos => todos,
@@ -114,23 +117,24 @@ export default {
       var text = e.target.value
       if (text.trim()) {
         // VUEX: adding todos
-        this.$store.commit('addTodo', { text })
+        // this.$store.commit('addTodo', { text })
        
        // REDUX : adding todos
        // the arguments resolves to a function definition that dispatches two events
        // uses THUNK middleware for async
         // this.$store.dispatch(this.$store._actions.addTodo[0](text))
         // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
-        this.$store.commit(this.$root.reduxActions.addedTodo(text))
+        console.log("1. addTodo method fired")
+        this.$store.commit(this.$root.reduxActions.addTodo(text))
       }
       e.target.value = ''
     },
 
     // map mutations  this.$store.commit('toggleAll') to this.toggleAll
-    ...mapMutations([
-      'toggleAll',
-      'clearCompleted'
-    ])
+    ...mapMutations({
+      toggleAll: 'COMPLETE_ALL',
+      clearCompleted: 'CLEAR_COMPLETED'
+    })
   },
   filters: {
     pluralize: (n, w) => n === 1 ? w : (w + 's'),
@@ -142,6 +146,14 @@ export default {
 </script>
 
 ////////////STYLING
+<style src="todomvc-app-css/index.css"></style>
 <style>
-
+  body{
+    background-color: #42B983 !important;
+  }
+  #header {
+    display: inline;
+    text-align: center;
+    font-size: 3em;
+  }
 </style>

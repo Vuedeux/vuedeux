@@ -2,9 +2,12 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import store from './store'
 import App from './components/App.vue'
-// import{reduxStore} from './store/reduxstore'
+import{reduxStore} from './store/reduxstore'
 import * as actionCreators from './store/reduxactions'
+import reduxMixinsCreator from './reduxMixinsCreator'
 
+
+const reduxMixins = reduxMixinsCreator(actionCreators, reduxStore)
 
 let app = new Vue({
   // provide the store using the "store" option.
@@ -13,10 +16,11 @@ let app = new Vue({
   name: "app",
   store,
   el: '#app',
-  data: {
-    reduxActions: actionCreators,
-    // reduxStore
-  },
+  mixins: [reduxMixins],
+  // data: {
+  //   reduxActions: actionCreators,
+  //   // reduxStore
+  // },
   // Render overwrites the template syntax of  {{greet}} on index.html
   render: createElement => createElement(App),
 });
