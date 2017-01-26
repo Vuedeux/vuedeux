@@ -8,6 +8,4 @@ export const reduxStore = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION
 
 reduxStore.subscribe(()=>{
   localStorage.setItem(STORAGE_KEY, JSON.stringify(reduxStore.getState()))
-	console.log("Todos from Redux", reduxStore.getState())
-})
- 
+});
