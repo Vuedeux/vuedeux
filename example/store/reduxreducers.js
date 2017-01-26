@@ -7,7 +7,7 @@ export const initstate = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) ||
 
 
 export default function todos(state = initstate , action) {
-  console.log("3. 4. Mutation triggered dispatch to reducer with the following state and action", state, action)
+  // console.log("3. 4. Mutation triggered dispatch to reducer with the following state and action", state, action)
   switch (action.type) {
     case ADD_TODO:
       return {todos:[
@@ -27,13 +27,13 @@ export default function todos(state = initstate , action) {
     case EDIT_TODO:
       return {todos: state.todos.map(todo =>
         todo.id === action.todo.id ?
-          { ...todo, text: action.text } :
+          { ...todo, text: action.value } :
           todo
       )}
 
     case COMPLETE_TODO:
       return {todos: state.todos.map(todo => {
-        return todo.id === action.todo.id ?{ ...todo, done: "working?" } : todo
+        return todo.id === action.todo.id ?{ ...todo, done: !todo.done } : todo
       })}
 
     case COMPLETE_ALL:

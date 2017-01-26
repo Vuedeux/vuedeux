@@ -1,13 +1,12 @@
 {
-  "name": "vue-redux-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "vuedeux",
+  "version": "1.0.1",
+  "description": "VueX to Redux Bindings",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node example/server.js"
   },
-  "author": "",
+  "author": "Vuedeux - Nikol Marentes, David Marx, & Brian Rudloff  (http://vuedeux.com)",
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.5.2",

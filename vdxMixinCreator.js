@@ -1,4 +1,13 @@
 function vdxMixinCreator(actionCreators, reduxStore) {
+  if (arguments.length < 2){
+    throw new Error('vdxMixinCreator missing neccesary parameters.')
+  }
+  if (typeof actionCreators !== 'object'){
+    throw new Error('vdxMixinCreator expects OBJECT with Action Creators as its first parameter')
+  }
+  if (!reduxStore.subscribe){
+    throw new Error('vdxMixinCreator expects Redux store as second parameter')
+  }
   return {
     data() {
       return { actions: null };
