@@ -6,8 +6,8 @@
     <!-- header -->
       <!--@keyup.enter="addTodo" is shorthand for v-on:keyup.enter='addTodo'-->
     <header class="header">
-      <img src= '../assets/vuedeuxsmall.png'>
-      <p id='header'> Vuedeux TodoMVC</p>
+      <img style='margin: 10px' src= '../assets/vuedeuxsmall.png'>
+      <p id='header' style='padding-left: 50px; margin-top: -75px; margin-left: 30px'> Vuedeux TodoMVC</p>
       <input class="new-todo"
         autofocus
         autocomplete="off"
@@ -60,11 +60,8 @@
 ////////////SCRIPT
 
 <script>
-import {reduxStore} from '../store/reduxstore'
 import { mapMutations } from 'vuex'
 import Todo from './todo.vue'
-import { bindActionCreators } from 'redux';
-import * as actionCreators from '../store/reduxactions'
 import 'todomvc-app-css/index.css'
 
 
@@ -79,27 +76,12 @@ export default {
   name: "Todo-List",
   data () {
     return {
-      // reduxStore,
-      // reduxActions: bindActionCreators(actionCreators, reduxStore.dispatch),
-      // reduxActions: actionCreators,
       visibility: 'all',
       filters: filters,
-
-      // todos: this.$select('todos.todos as todos')
     }
   },
   computed: {
     todos () {
-      console.log("THIS from within App.vue", this)
-      console.log("Action Creators", actionCreators)
-      // console.log("REDUX TODOS", this.$select('todos'))
-      console.log("Vue.$store.state.redux: ", this.$store.state.redux)
-      // REDUX : COMPUTE NEW TODO ITEMS  // Won't be reactive in this case
-      // return this.$select('todos.todos as todos')
-     
-      // VUEX GLOBAL: COMPUTE NEW TODO ITEMS
-      // return this.$store.state.todos
-      // VUEX REDUX MODULE: SHOW TODO FROM REDUX MODULE
       return this.$store.state.redux.todos
     },
     allChecked () {
@@ -116,21 +98,12 @@ export default {
     addTodo (e) {
       var text = e.target.value
       if (text.trim()) {
-        // VUEX: adding todos
-        // this.$store.commit('addTodo', { text })
-       
-       // REDUX : adding todos
-       // the arguments resolves to a function definition that dispatches two events
-       // uses THUNK middleware for async
-        // this.$store.dispatch(this.$store._actions.addTodo[0](text))
-        // this.reduxStore.dispatch(this.reduxActions.addTodo(text));
-        console.log("1. addTodo method fired")
         this.$store.commit(this.$root.reduxActions.addTodo(text))
       }
       e.target.value = ''
     },
 
-    // map mutations  this.$store.commit('toggleAll') to this.toggleAll
+    // map mutations  this.$store.commit('COMPLETE_ALL') to this.toggleAll
     ...mapMutations({
       toggleAll: 'COMPLETE_ALL',
       clearCompleted: 'CLEAR_COMPLETED'
@@ -142,7 +115,6 @@ export default {
   }
 }
 
-
 </script>
 
 ////////////STYLING
@@ -151,8 +123,7 @@ export default {
   body{
     background-color: #42B983 !important;
   }
-  #header {
-    display: inline;
+  #header {   
     text-align: center;
     font-size: 3em;
   }
