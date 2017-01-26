@@ -1,6 +1,6 @@
 # vuedeux
 
-[[https://github.com/Vuedeux/vuedeux/dollsmall.png]]
+![alt tag](https://github.com/Vuedeux/vuedeux/dollsmall.png)
 
 ## Synopsis 
 
