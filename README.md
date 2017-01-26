@@ -7,7 +7,9 @@
 An open-source lightweight utility layer that binds Redux to Vuex, allowing applications to incorporate Vue components while enjoying the benefits of both Redux and Vuex state management systems.
 
 ## Motivation
-Knowing Redux has a broad user-base and support with a wide range of middlewares, tools, and bindings, the Vuedeux team set out to build a bridge to these benefits from the Vue-Vuex interface. By creating a compatibility layer between Redux and VueX we open access to Redux resources while maintaining the convenience and performance of VueX which has been designed from the ground up for use in Vue.  With the Vuedeux binding we aimed to create a simple way to re-use state-dependent code and deploy framework agnostic interfaces in highly-customizable and large-scale applications. 
+Vuedeux answers our team's desire to create a simple way to re-use and share state-dependent code with Vuex. The decision to create Vuedeux, a compatibility layer between Vuex and Redux, was inspired by the split between the quickly growing Vue/Vuex community and the broad user-base and support for Redux's wide range of middlewares, tools, and bindings.
+
+The Vuedeux team recognized that building a bridge between the Vue/Vuex ecosystem and Redux could bring a multitude of benefits and open access to Redux resources while maintaining the convenience and performance of Vuex as the Vue/Vuex community grows.
 
 ## How It Works
 
