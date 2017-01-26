@@ -1,5 +1,7 @@
 # vuedeux
 
+![alt tag](https://github.com/brianrudloff/vuedoo/blob/styleupdate/dollsmall.png)
+
 ## Synopsis 
 
 An open-source lightweight utility layer that binds Redux to Vuex allowing applications to incorporate Vue components while enjoying the benefits of both Redux and Vuex state management systems.
