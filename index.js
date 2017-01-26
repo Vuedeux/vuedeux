@@ -1,8 +1,13 @@
-exports.printMsg = function() {
-  console.log("This is a message from the demo package");
-}
+const MixinCreator = require('./vdxPluginCreator');
+const PluginCreator = require('./vdxMixinCreator');
 
-module.exports = require('./vdxMixinCreator');
-module.exports = require('./vdxPluginCreator');
+const vdx = {
+  MixinCreator,
+  PluginCreator,
+};
 
+vdx.printMsg = function () {
+  console.log('This is a message from the demo package');
+};
 
+module.exports = vdx;
