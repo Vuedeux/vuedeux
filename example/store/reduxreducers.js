@@ -1,13 +1,7 @@
 import { combineReducers } from 'redux'
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from './reduxactiontypes'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED } from '../actions/reduxactiontypes'
 
 export const STORAGE_KEY = 'todos-David-VUE/REDUX'
-
-// PULL STATE from local storage using Storage Key
-
-// export const initstate = {
-//   todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
-// }
 
 export const initstate = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || {todos:[]};
 
@@ -60,9 +54,9 @@ export default function todos(state = initstate , action) {
 
 export const reducer =  todos;
 
-// //If I had multiple reducers controling part of state
-// export const reducer =  combineReducers({
-//   todos
-// })
-
+/* If one had multiple reducers controling subsections of state you could use combineReducers
+  export const reducer =  combineReducers({
+    todos
+  })
+*/
 
