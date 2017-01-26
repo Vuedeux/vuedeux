@@ -1,6 +1,6 @@
 # vuedeux
 
-![alt tag](https://github.com/Vuedeux/vuedeux/dollsmall.png)
+![alt tag](https://github.com/brianrudloff/vuedoo/blob/styleupdate/dollsmall.png)
 
 ## Synopsis 
 
