@@ -1,6 +1,6 @@
 {
   "name": "vuedeux",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "VueX to Redux Bindings",
   "main": "index.js",
   "scripts": {
