@@ -7,7 +7,7 @@ const vdx = {
 };
 
 vdx.printMsg = function () {
-  console.log('This is a message from the demo package');
+  console.log('Made by Nikol Marentes, David Marx, & Brian Rudloff');
 };
 
 module.exports = vdx;
