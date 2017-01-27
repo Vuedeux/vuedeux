@@ -1,23 +1,20 @@
-function vdxMixinCreator(actionCreators, reduxStore) {
-  if (arguments.length < 2){
-    throw new Error('vdxMixinCreator missing neccesary parameters.')
-  }
+function vdxMixinCreator(reduxStore, actionCreators) {
   if (typeof actionCreators !== 'object'){
-    throw new Error('vdxMixinCreator expects OBJECT with Action Creators as its first parameter')
+    throw new Error('vdxMixinCreator accepts OBJECT with Action Creators as its second parameter')
   }
   if (!reduxStore.subscribe){
-    throw new Error('vdxMixinCreator expects Redux store as second parameter')
+    throw new Error('vdxMixinCreator expects Redux store as first parameter')
   }
   return {
     data() {
-      return { actions: null };
+      return { reduxActions: null };
     }, 
 
     created() {
       this.reduxActions = actionCreators;
       // Subscribe to redux in order to update VueX redux module
-      this.unsubscribe = reduxStore.subscribe(this.updateVuex);
       this.updateVuex();
+      this.unsubscribe = reduxStore.subscribe(this.updateVuex);
     },
 
     beforeDestroy() {

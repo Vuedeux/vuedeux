@@ -7,7 +7,7 @@ import{reduxStore} from './store/reduxstore'
 import * as actionCreators from './actions/reduxactions'
 import vdxMixinCreator from '../vdxMixinCreator'
 
-const vdx = vdxMixinCreator(actionCreators, reduxStore);
+const vdx = vdxMixinCreator(reduxStore, actionCreators);
 
 let app = new Vue({
   name: "app",

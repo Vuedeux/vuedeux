@@ -2,7 +2,7 @@
 
 ![alt tag](https://github.com/brianrudloff/vuedoo/blob/styleupdate/dollsmall.png)
 
-
+## Documentation
 https://vueduex.gitbooks.io/vuedeux-documentation/content/
 
 ## Synopsis 
