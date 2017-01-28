@@ -1,6 +1,6 @@
 # vuedeux
 
-![alt tag](./example/assets.vuedeuxsmall.png)
+![alt tag](./example/assets/vuedeuxsmall.png)
 
 ## Documentation
 https://vueduex.gitbooks.io/vuedeux-documentation/content/
