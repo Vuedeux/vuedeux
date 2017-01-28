@@ -31,6 +31,9 @@ export default {
       editing: false
     }
   },
+  beforeUpdate: function(){
+    console.log("Updating todo", this)
+  },
   directives: {
     focus (el, { value }, { context }) {
       if (value) {
@@ -47,7 +50,6 @@ export default {
       deleteTodo: 'DELETE_TODO'
     }),
     doneEdit (e) {
-      console.log("THIS FROM WITHIN TODO: ", this);
       const value = e.target.value.trim()
       const { todo } = this
       if (!value) {

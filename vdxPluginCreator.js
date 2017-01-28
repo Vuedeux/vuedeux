@@ -9,18 +9,27 @@ function vdxPluginCreator(reduxStore, actionTypes){
   if (!reduxStore.dispatch){
     throw new Error('vdxPluginCreator expects Redux store with your root reducer as first parameter')
   }
+  const reduxActions = {};
   const reduxMutations = {};
   Object.keys(actionTypes).forEach((type) => {
-    reduxMutations[type] =  (state, action) => {
-      // reduxStore.dispatch({type:type, ...action}); 
-      reduxStore.dispatch(Object.assign({}, action, {type}));
-    };
-  });
+    reduxMutations[type] = (state, action) => {
+      let newState = reduxStore.getState()
+      console.log(JSON.stringify({newState[val]}) === JSON.stringify({butts:4}))
+      Object.keys(newState).forEach((val)=> state[val] = newState[val])
+    }
+
+    reduxActions[type] =  ({dispatch, commit}, action) => {
+      reduxStore.dispatch(Object.assign({}, action, { type }));
+      commit(type, action)
+    }
+  })
+
   return (store) => {
     store.registerModule('redux', {
       // ALT. state: {...reduxStore.getState()},
       state: Object.assign({}, reduxStore.getState()),
       mutations: reduxMutations,
+      actions: reduxActions,
     });
   };
 }

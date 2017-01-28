@@ -96,9 +96,10 @@ export default {
   },
   methods: {
     addTodo (e) {
+      console.log("this in addtodo", this)
       var text = e.target.value
       if (text.trim()) {
-        this.$store.commit(this.$root.reduxActions.addTodo(text))
+        this.$store.dispatch(this.$root.reduxActions.addTodo(text))
       }
       e.target.value = ''
     },
