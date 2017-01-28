@@ -21,7 +21,7 @@
 
 //SCRIPT
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Todo',
@@ -30,6 +30,9 @@ export default {
     return {
       editing: false
     }
+  },
+  beforeUpdate: function(){
+    console.log("Updating todo", this)
   },
   directives: {
     focus (el, { value }, { context }) {
@@ -41,13 +44,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
+    ...mapActions({
       editTodo: 'EDIT_TODO',
       toggleTodo: 'COMPLETE_TODO',
       deleteTodo: 'DELETE_TODO'
     }),
     doneEdit (e) {
-      console.log("THIS FROM WITHIN TODO: ", this);
       const value = e.target.value.trim()
       const { todo } = this
       if (!value) {

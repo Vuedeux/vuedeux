@@ -1,12 +1,13 @@
 export const STORAGE_KEY = 'FullVueXState'
 
 export const state = {
-  todos: JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
+...(JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]'))
 }
 
 export const mutations = {
-
-// YOUR VUEX MUTATIONS
-
+  // reduxUpdate(state, actionObject){
+  //   console.log('hi')
+  //   state = {...actionObject};
+  // }
 }
 

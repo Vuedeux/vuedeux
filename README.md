@@ -1,8 +1,8 @@
 # vuedeux
 
-![alt tag](https://github.com/brianrudloff/vuedoo/blob/styleupdate/dollsmall.png)
+![alt tag](./example/assets/vuedeuxsmall.png)
 
-
+## Documentation
 https://vueduex.gitbooks.io/vuedeux-documentation/content/
 
 ## Synopsis 

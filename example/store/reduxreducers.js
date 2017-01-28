@@ -3,60 +3,64 @@ import { ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_CO
 
 export const STORAGE_KEY = 'todos-David-VUE/REDUX'
 
-export const initstate = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || {todos:[]};
+export const todoArray = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || [];
 
 
-export default function todos(state = initstate , action) {
+export default function todos(todos = [] , action) {
   // console.log("3. 4. Mutation triggered dispatch to reducer with the following state and action", state, action)
   switch (action.type) {
     case ADD_TODO:
-      return {todos:[
+      return [
         {
-          id: state.todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+          id: todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           done: false,
           text: action.text
         },
-        ...state.todos
-      ]}
+        ...todos
+      ]
 
     case DELETE_TODO:
-      return {todos: state.todos.filter(todo =>
+      return todos.filter(todo =>
         todo.id !== action.todo.id
-      )}
+      )
 
     case EDIT_TODO:
-      return {todos: state.todos.map(todo =>
+      return todos.map(todo =>
         todo.id === action.todo.id ?
           { ...todo, text: action.value } :
           todo
-      )}
+      )
 
     case COMPLETE_TODO:
-      return {todos: state.todos.map(todo => {
+      return todos.map(todo => {
         return todo.id === action.todo.id ?{ ...todo, done: !todo.done } : todo
-      })}
+      })
 
     case COMPLETE_ALL:
-      const areAllMarked = state.todos.every(todo => todo.done)
-      return {todos: state.todos.map(todo => ({
+      const areAllMarked = todos.every(todo => todo.done)
+      return todos.map(todo => ({
         ...todo,
         done: !areAllMarked
-      }))}
+      }))
 
     case CLEAR_COMPLETED:
-      return {todos:state.todos.filter(todo => todo.done === false)}
+      return todos.filter(todo => todo.done === false)
 
     default:
-      return state
+      return todos
   }
 }
 
 
-export const reducer =  todos;
+  export const reducer = function todoApp(state = {}, action) {
+    return {
+      todos: todos(state.todos, action)
+    }
+  }
 
-/* If one had multiple reducers controling subsections of state you could use combineReducers
-  export const reducer =  combineReducers({
-    todos
-  })
-*/
+// You could also use combineReducers Redux helper function to do same as above
+//  export const reducer =  combineReducers({
+//    todos
+//  })
+
 

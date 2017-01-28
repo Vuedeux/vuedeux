@@ -18,7 +18,7 @@ import { reduxStore } from './reduxstore';
 // Make sure to call Vue.use(Vuex) first if using a module system
 Vue.use(Vuex);
 
-let vdx = vdxPluginCreator(reduxActionTypes, reduxStore);
+let vdx = vdxPluginCreator(reduxStore, reduxActionTypes);
 
 const store = new Vuex.Store({
   state,

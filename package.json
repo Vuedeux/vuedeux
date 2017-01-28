@@ -1,6 +1,6 @@
 {
   "name": "vuedeux",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "VueX to Redux Bindings",
   "main": "index.js",
   "scripts": {
@@ -41,6 +41,7 @@
     "webpack-hot-middleware": "^2.15.0"
   },
   "dependencies": {
+    "lodash.isequal": "^4.5.0",
     "todomvc-app-css": "^2.0.6"
   }
 }
