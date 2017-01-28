@@ -1,6 +1,6 @@
 # vuedeux
 
-![alt tag](https://vuedeux.com/img/portfolio/fullsize/doll.jpg)
+![alt tag](./example/assets.vuedeuxsmall.png)
 
 ## Documentation
 https://vueduex.gitbooks.io/vuedeux-documentation/content/
