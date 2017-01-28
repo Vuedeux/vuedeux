@@ -41,6 +41,7 @@
     "webpack-hot-middleware": "^2.15.0"
   },
   "dependencies": {
+    "lodash.isequal": "^4.5.0",
     "todomvc-app-css": "^2.0.6"
   }
 }

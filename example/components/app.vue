@@ -60,7 +60,7 @@
 ////////////SCRIPT
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import Todo from './todo.vue'
 import 'todomvc-app-css/index.css'
 
@@ -105,7 +105,7 @@ export default {
     },
 
     // map mutations  this.$store.commit('COMPLETE_ALL') to this.toggleAll
-    ...mapMutations({
+    ...mapActions({
       toggleAll: 'COMPLETE_ALL',
       clearCompleted: 'CLEAR_COMPLETED'
     })

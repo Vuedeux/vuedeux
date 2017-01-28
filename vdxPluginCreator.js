@@ -1,3 +1,4 @@
+var isEqual = require('lodash.isequal');
 
 function vdxPluginCreator(reduxStore, actionTypes){
   if (arguments.length < 2){
@@ -14,8 +15,9 @@ function vdxPluginCreator(reduxStore, actionTypes){
   Object.keys(actionTypes).forEach((type) => {
     reduxMutations[type] = (state, action) => {
       let newState = reduxStore.getState()
-      console.log(JSON.stringify({newState[val]}) === JSON.stringify({butts:4}))
-      Object.keys(newState).forEach((val)=> state[val] = newState[val])
+      Object.keys(newState).forEach((val) => {
+        if (!isEqual(state[val], newState[val])) state[val] = newState[val]
+      })
     }
 
     reduxActions[type] =  ({dispatch, commit}, action) => {

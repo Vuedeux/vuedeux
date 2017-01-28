@@ -21,7 +21,7 @@
 
 //SCRIPT
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'Todo',
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
+    ...mapActions({
       editTodo: 'EDIT_TODO',
       toggleTodo: 'COMPLETE_TODO',
       deleteTodo: 'DELETE_TODO'
