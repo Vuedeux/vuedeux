@@ -96,15 +96,14 @@ export default {
   },
   methods: {
     addTodo (e) {
-      console.log("this in addtodo", this)
       var text = e.target.value
       if (text.trim()) {
-        this.$store.dispatch(this.$root.reduxActions.addTodo(text))
+        this.$store.dispatch(this.$root.reduxActions.addingTodo(text))
       }
       e.target.value = ''
     },
 
-    // map mutations  this.$store.commit('COMPLETE_ALL') to this.toggleAll
+    // map Actions ==> example. this.$store.dispatch('COMPLETE_ALL') to this.toggleAll
     ...mapActions({
       toggleAll: 'COMPLETE_ALL',
       clearCompleted: 'CLEAR_COMPLETED'

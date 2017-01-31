@@ -6,7 +6,7 @@ export const STORAGE_KEY = 'todos-David-VUE/REDUX'
 export const todoArray = JSON.parse(window.localStorage.getItem(STORAGE_KEY)) || [];
 
 
-export default function todos(todos = [] , action) {
+export default function todos(todos = todoArray , action) {
   // console.log("3. 4. Mutation triggered dispatch to reducer with the following state and action", state, action)
   switch (action.type) {
     case ADD_TODO:
