@@ -1,8 +1,8 @@
 const PluginCreator = require('./vdxPluginCreator');
-const MixinCreator = require('./vdxMixinCreator');
+// const MixinCreator = require('./vdxMixinCreator');
 
 const vdx = {
-  MixinCreator,
+  // MixinCreator,
   PluginCreator,
 };
 
