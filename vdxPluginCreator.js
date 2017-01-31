@@ -40,13 +40,13 @@ function vdxPluginCreator(reduxStore, actionTypes){
       mutations: reduxMutations,
       actions: reduxActions,
     });
-    //VUEX dispatch monkeypatch
 
+    //VUEX dispatch monkeypatch
     let next = store.dispatch;
     store.dispatch = function(...args){
       if(typeof args[0] === 'function'){
         args[0](next, store.state)
-        // reduxStore.dispatch(args[0], args[1]) // no way for vue to know what is going on within thunk
+        // reduxStore.dispatch(args[0], args[1]) // no way for vue to know what is going on within Redux thunk
       }
       else next(...args)
     }
