@@ -1,9 +1,9 @@
 function vdxMixinCreator(reduxStore, actionCreators) {
+  if (!reduxStore || !reduxStore.subscribe){
+    throw new Error('vdxMixinCreator expects Redux store as first parameter')
+  }
   if (typeof actionCreators !== 'object'){
     throw new Error('vdxMixinCreator accepts OBJECT with Action Creators as its second parameter')
-  }
-  if (!reduxStore.subscribe){
-    throw new Error('vdxMixinCreator expects Redux store as first parameter')
   }
   return {
     data() {

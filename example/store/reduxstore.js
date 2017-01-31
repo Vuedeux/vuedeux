@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { createStore, applyMiddleware, compose } from 'redux'
 import {reducer, STORAGE_KEY} from './reduxreducers'
-import vuex from './vuex'
-
+import vuex from './vuex';
+import thunk from 'redux-thunk';
 const logger = store => next => action => {
   console.group(action.type)
   console.info('dispatching', action)
@@ -16,7 +16,7 @@ const logger = store => next => action => {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const reduxStore = createStore(reducer, composeEnhancers(
-  applyMiddleware(logger)
+  applyMiddleware(thunk, logger)
 ));
 
 
