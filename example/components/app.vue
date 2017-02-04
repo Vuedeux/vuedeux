@@ -103,7 +103,6 @@ export default {
       e.target.value = ''
     },
 
-    // map Actions ==> example. this.$store.dispatch('COMPLETE_ALL') to this.toggleAll
     ...mapActions({
       toggleAll: 'COMPLETE_ALL',
       clearCompleted: 'CLEAR_COMPLETED'

@@ -31,9 +31,6 @@ export default {
       editing: false
     }
   },
-  beforeUpdate: function(){
-    console.log("Updating todo", this)
-  },
   directives: {
     focus (el, { value }, { context }) {
       if (value) {
