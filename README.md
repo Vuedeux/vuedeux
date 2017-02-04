@@ -1,6 +1,6 @@
 # vuedeux
 
-<img height="300" src="https://github.com/dmrx/vuedoo/raw/master/example/assets/vuedeuxsmall.png">
+<img height="200" src="https://github.com/dmrx/vuedoo/raw/master/example/assets/vuedeuxsmall.png">
 
 
 ## Documentation
