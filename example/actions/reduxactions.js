@@ -10,7 +10,7 @@ export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
 export function addingTodo (text) {
   return (dispatch, getState) => {
     // the following line is always an async ajax call, like:
-    // return fetch().then().then(data => dispatch(addedTodo(data)))
+    // return fetch().then().then(data => dispatch(addTodo(data)))
     // here we use setTimeout to fake one
     setTimeout(() => {
       dispatch(addTodo(text))
