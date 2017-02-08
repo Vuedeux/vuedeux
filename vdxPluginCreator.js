@@ -1,41 +1,48 @@
-var isEqual = require('lodash.isequal');
+function vdxPluginCreator(reduxStore, actionTypes) {
+  if (arguments.length < 2) {
+    throw new Error('vdxPluginCreator missing neccesary parameters.');
+  }
+  if (!reduxStore.dispatch) {
+    throw new Error('vdxPluginCreator expects your Redux store as first parameter');
+  }
+  if (typeof actionTypes !== 'object') {
+    throw new Error('vdxPluginCreator expects OBJECT with Action Type Constants as second parameter');
+  }
 
-function vdxPluginCreator(reduxStore, actionTypes){
-  if (arguments.length < 2){
-    throw new Error('vdxPluginCreator missing neccesary parameters.')
-  }
-  if (typeof actionTypes !== 'object'){
-    throw new Error('vdxPluginCreator expects OBJECT with Action Type Constants as second parameter')
-  }
-  if (!reduxStore.dispatch){
-    throw new Error('vdxPluginCreator expects Redux store with your root reducer as first parameter')
-  }
   const reduxActions = {};
   const reduxMutations = {};
-  Object.keys(actionTypes).forEach((type) => {
-    reduxMutations[type] = (state, action) => {
-      let newState = reduxStore.getState()
-      Object.keys(newState).forEach((val) => {
-        if (!isEqual(state[val], newState[val])) state[val] = newState[val]
-      })
-    }
 
-    reduxActions[type] =  ({dispatch, commit}, action) => {
+  Object.keys(actionTypes).forEach((type) => {
+    reduxMutations[type] = (state, action) => { }; // Register Action
+
+    reduxActions[type] = ({ dispatch, commit }, action) => {
       reduxStore.dispatch(Object.assign({}, action, { type }));
-      commit(type, action)
-    }
-  })
+      commit(type, action);
+    };
+  });
 
   return (store) => {
     store.registerModule('redux', {
-      // ALT. state: {...reduxStore.getState()},
       state: Object.assign({}, reduxStore.getState()),
       mutations: reduxMutations,
       actions: reduxActions,
     });
+
+    const next = store.dispatch;
+    store.dispatch = function (...args) {
+      if (typeof args[0] === 'function') {
+        args[0](next, store.state, ...args.slice(1));
+      } else { 
+        next(...args);
+      }
+    };
+
+    function updateVuex() {
+      store.state.redux = Object.assign({}, reduxStore.getState());
+    }
+
+    reduxStore.subscribe(updateVuex);
   };
 }
 
-// export default vdxPluginCreator
-
-module.exports = vdxPluginCreator
+module.exports = vdxPluginCreator;
