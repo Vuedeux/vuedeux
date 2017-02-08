@@ -13,7 +13,7 @@
     "redux": "^3.6.0",
     "vue": "^2.1.0",
     "vue-router": "^2.2.0",
-    "vuedeux": "^1.0.5",
+    "vuedeux": "^1.0.7",
     "vuex": "^2.1.1"
   },
   "devDependencies": {
