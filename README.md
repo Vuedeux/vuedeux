@@ -1,6 +1,6 @@
 # vuedeux
 
-![Alt Text](https://github.com/dmrx/vuedoo/raw/master/example/assets/vuedeuxsmall.png)
+![Alt Text](https://github.com/dmrx/vuedoo/raw/master/examples/TodoMVC/assets/vuedeuxsmall.png)
 
 
 ## Full Documentation
