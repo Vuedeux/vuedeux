@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import { state, mutations } from './mutations';
 import { localStoragePlugin } from './plugins';
 
-import vdxPluginCreator from '../../vdxPluginCreator';
+import vdxPluginCreator from '../../../vdxPluginCreator';
 import * as reduxActionTypes from '../actions/reduxactiontypes';
 import reduxStore from './reduxStore';
 

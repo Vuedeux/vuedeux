@@ -11,13 +11,14 @@ import { state, mutations } from './mutations';
   1. Your Redux action type constants
   2. Your Redux store
 */ 
-import { PluginCreator } from 'vuedeux';
+import PluginCreator from 'vuedeux';
 import * as reduxActionTypes from '../redux/actions/reduxActionTypes';
 import reduxStore from '../redux/store';
 
 // Make sure to call Vue.use(Vuex) first if using a module system
 Vue.use(Vuex);
 
+console.log(vdx)
 // Set PluginCreator to a variable
 let vdx = PluginCreator(reduxStore, reduxActionTypes);
 
