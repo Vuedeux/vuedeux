@@ -1,5 +1,3 @@
-const isEqual = require('lodash.isequal');
-
 function vdxPluginCreator(reduxStore, actionTypes) {
   if (arguments.length < 2) {
     throw new Error('vdxPluginCreator missing neccesary parameters.');
@@ -15,15 +13,7 @@ function vdxPluginCreator(reduxStore, actionTypes) {
   const reduxMutations = {};
 
   Object.keys(actionTypes).forEach((type) => {
-    reduxMutations[type] = (state, action) => {
-      const newState = reduxStore.getState();
-      Object.keys(newState).forEach((val) => {
-        // Below dirty check unnecessary? Listner already triggered
-        if (!isEqual(state[val], newState[val])) {
-          state[val] = newState[val];
-        }
-      });
-    };
+    reduxMutations[type] = (state, action) => { }; // Register Action
 
     reduxActions[type] = ({ dispatch, commit }, action) => {
       reduxStore.dispatch(Object.assign({}, action, { type }));
@@ -38,13 +28,10 @@ function vdxPluginCreator(reduxStore, actionTypes) {
       actions: reduxActions,
     });
 
-    // VUEX dispatch monkeypatch to accept Redux Thunks
     const next = store.dispatch;
     store.dispatch = function (...args) {
       if (typeof args[0] === 'function') {
-        args[0](next, store.state);
-        // no way for vue to know what is going on within Redux thunk
-        // reduxStore.dispatch(args[0], args[1])
+        args[0](next, store.state, ...args.slice(1));
       } else { 
         next(...args);
       }
