@@ -128,10 +128,10 @@ export default store;
 ```
 
 ### Your new Vuex Structure
-|-- VUEX STORE ($store in child components)
-  |-- STATE ($store.state)
-    |-- REDUX --- ($store.state.redux)
-      (Your existing Redux Store)
+* VUEX STORE ($store in child components)
+  * STATE ($store.state)
+    * REDUX --- ($store.state.redux)
+      * (Your existing Redux Store)
 
 ## Contributers
 Nikol Marentes, David Marx, & Brian Rudloff 
