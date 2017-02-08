@@ -4,7 +4,7 @@
   "description": "VueX to Redux Bindings",
   "main": "index.js",
   "scripts": {
-    "start": "node example/server.js"
+    "start": "node examples/TodoMVC/server.js"
   },
   "author": "Vuedeux - Nikol Marentes, David Marx, & Brian Rudloff  (http://vuedeux.com)",
   "license": "ISC",

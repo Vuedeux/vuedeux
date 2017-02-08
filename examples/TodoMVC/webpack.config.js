@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
   devtools: 'inline-source-map',
 
-  entry: './example/app.js',
+  entry: './examples/TodoMVC/app.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'build.js',
