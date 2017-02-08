@@ -1,13 +1,8 @@
-import { STORAGE_KEY } from './mutations'
-import { reduxStore } from './reduxstore'
+import { STORAGE_KEY } from './mutations';
 
-export const localStoragePlugin = store => {
+export const localStoragePlugin = (store) => {
   store.subscribe((mutation, state) => {
-    console.log("Plugin watch:", mutation, state)
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-  })
-}
-
-
-
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  });
+};
 
