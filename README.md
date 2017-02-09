@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/vuedeux.png?compact=true)](https://npmjs.org/package/vuedeux)
+
 # vuedeux
 
 ![Alt Text](https://github.com/dmrx/vuedoo/raw/master/examples/TodoMVC/assets/vuedeuxsmall.png)
