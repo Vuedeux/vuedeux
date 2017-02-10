@@ -18,7 +18,7 @@ import reduxStore from '../redux/store';
 // Make sure to call Vue.use(Vuex) first if using a module system
 Vue.use(Vuex);
 
-console.log(vdx)
+
 // Set PluginCreator to a variable
 let vdx = PluginCreator(reduxStore, reduxActionTypes);
 
