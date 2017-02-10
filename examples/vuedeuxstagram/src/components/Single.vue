@@ -23,8 +23,8 @@
       </ul>
 
       <div id="inputDiv">
-        <input type="text" placeholder="author..." id="user" v-model="user"></input>
-        <div id="line"></div>
+        <!--<input type="text" placeholder="author..." id="user" v-model="user"></input>
+        <div id="line"></div>-->
         <input type="text" placeholder="comment..." id="comment" v-model="comment" v-on:keyup.enter="add_comment({postId: getCode, author: user, comment: comment }), clearInputs()" ></input>
         <div id="lastLine"></div>
      </div>
@@ -41,7 +41,7 @@ import {mapActions} from 'vuex';
 export default {
   data () {
     return {
-      user: "",
+      user: "David",
       comment: ""
     }
   },
@@ -117,7 +117,6 @@ export default {
       remove_comment: 'REMOVE_COMMENT'
     }),
     clearInputs () {
-      this.user = '';
       this.comment = '';
     }
   }
@@ -154,12 +153,12 @@ export default {
   }
 
   #left {
-    width: 500px;
+    width: 100%;
     order: 1;
   }
 
   #right {
-    width: 250px;
+    width: 100%;
     order: 2;
     padding: 15px;
     padding-bottom:10px;
