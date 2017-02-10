@@ -45,7 +45,7 @@ npm start
 
 You should now be able to navigate to http://localhost:8080/ to demo the app.
 
-The architecture of this classic TODO MVC app can be found in the examples folder and offers a simple example of the Vuedeux data flow from VueX to Redux and back.
+The architecture of this classic TODO MVC app can be found in the examples folder and offers a simple example of the Vuedeux data flow from Vuex to Redux and back.
 
 ## Installation
 ```
@@ -54,7 +54,7 @@ npm install vuedeux
 ## Getting Started
 In this section we will be breaking down how to get started with the Vuedeux Plugin Creator.
 
-The Vuedeux plugin initiates a Vuex module and maps all actions between the newly created Vuex module and Redux. It also keeps our Redux store and our Vuex 'Redux' module in sync.
+The Vuedeux plugin initiates a Vuex module and maps all actions between the newly created Vuex module and Redux. It also keeps our Redux store and our Vuex 'Vuedeux' module in sync.
 
 ### Importing the dependencies
 ```
@@ -98,9 +98,9 @@ mutations,
 plugins: [vdx],
 });
 ```
-To add the plugin simply place the plugin into the plugin option of your Vuex store.
+To add the plugin simply place it into the plugin option of your Vuex store.
 
-All the existing mutations, actions , getters, even existing plugin you utilize in an existing Vuex state will be unaffected.
+All the existing mutations, actions, getters, even existing plugins you utilize in an existing Vuex state will be unaffected.
 
 ### Putting it all together
 ```
