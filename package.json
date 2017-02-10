@@ -4,7 +4,8 @@
   "description": "VueX to Redux Bindings",
   "main": "index.js",
   "scripts": {
-    "start": "node examples/TodoMVC/server.js"
+    "start": "node examples/TodoMVC/server.js",
+    "test": "export NODE_ENV=test && mocha --timeout 8000 test/"
   },
   "author": "Vuedeux - Nikol Marentes, David Marx, & Brian Rudloff  (http://vuedeux.com)",
   "license": "ISC",
@@ -22,7 +23,6 @@
     "eslint-plugin-html": "^1.7.0",
     "fs": "0.0.1-security",
     "redux-thunk": "^2.2.0",
-    "revue": "^3.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^2.0.7",
@@ -31,13 +31,15 @@
     "vue-template-compiler": "^2.1.10"
   },
   "dependencies": {
-    "vue": "^2.1.10",
     "babel-polyfill": "^6.20.0",
+    "chai": "^3.5.0",
     "express": "^4.14.0",
+    "mocha": "^3.2.0",
     "redux": "^3.6.0",
+    "vue": "^2.1.10",
+    "vuex": "^2.1.1",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
-    "webpack-hot-middleware": "^2.15.0",
-    "vuex": "^2.1.1"
+    "webpack-hot-middleware": "^2.15.0"
   }
 }
