@@ -69,10 +69,10 @@ export default {
 
   #container {
     width: 300px;
-    background-color: #F5F5F5;
+    background-color: white;
     border-style: solid;
     border-color: #EDEDED;
-    border-width: 5px;
+    border-width: 3px;
   }
 
   #lower {
