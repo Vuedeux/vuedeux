@@ -140,7 +140,7 @@ export default {
   }
 
   .postContainer {
-    background-color: #F5F5F5;
+    background-color: white;
     width: 60%;
     margin: 0 auto;
     display: flex;
@@ -213,7 +213,7 @@ export default {
     font-size: 1em;
     color: #2c3e50;
     border-style: none;
-    background-color: #F5F5F5;
+    background-color: white;
     outline:0
   }
 

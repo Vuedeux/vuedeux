@@ -8,6 +8,39 @@ const comments = {
     }
   ],
   "BAcyDyQwcXX":[
+        {
+      "text":"Amazing!",
+      "user": "pathiebert"
+    },
+    {
+      "text":"How many miles was the hike?",
+      "user": "kaitbos"
+    }
+  ],
+  "BAPIPRjQce9":[
+    {
+      "text":"Hope you weren't actually that close.",
+      "user": "rrsimonsen"
+    },
+    {
+      "text":"Baloo! 😝😛😝♥️",
+      "user": "terzisn"
+    },
+    {
+      "text":"Did you have some honey for him?",
+      "user": "henrihelvetica"
+    },
+  ],
+  "BAF_KY4wcRY":[
+        {
+      "text":"Oh!  How magical.  Where is this?",
+      "user": "mdxprograms"
+    }
+  ],
+  "_4jHytwcUA":[
+
+  ],
+  "_zbaOlQcbn":[
     {
       "text":"Wes. WE should have lunch.",
       "user": "jdaveknox"
@@ -23,58 +56,6 @@ const comments = {
     {
       "text":"😍 love glaciers!",
       "user": "willowtreemegs"
-    }
-  ],
-  "BAPIPRjQce9":[
-    {
-      "text":"Not the bees!!",
-      "user": "rrsimonsen"
-    },
-    {
-      "text":"BEADS???? 😝😛😝♥️",
-      "user": "terzisn"
-    },
-    {
-      "text":"Save the bees!",
-      "user": "henrihelvetica"
-    },
-  ],
-  "BAF_KY4wcRY":[
-    {
-      "text":"Wow, what a cool looking grove.",
-      "user": "axcdnt"
-    },
-    {
-      "text":"Where is this?",
-      "user": "henrihelvetica"
-    },
-    {
-      "text":"Hope you enjoyed the hike.",
-      "user": "pmgllc"
-    },
-    {
-      "text":"Somebody call a gardener.",
-      "user": "alexbaumgertner"
-    },
-    {
-      "text":"This is near at Indian Wells near Palm Springs.",
-      "user": "brudloff"
-    }
-  ],
-  "_4jHytwcUA":[
-    {
-      "text":"Yum!  Looks great.",
-      "user": "mdxprograms"
-    }
-  ],
-  "_zbaOlQcbn":[
-    {
-      "text":"So precious!",
-      "user": "pathiebert"
-    },
-    {
-      "text":"Looks like he's the only one at the beach today.",
-      "user": "kaitbos"
     }
   ],
   "_rmvQfQce8":[
