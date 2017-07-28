@@ -3,10 +3,10 @@ function vdxPluginCreator(reduxStore, actionTypes, actionCreators) {
     throw new Error('vdxPluginCreator missing neccesary parameters.');
   }
   if (!reduxStore.dispatch) {
-    throw new Error('vdxPluginCreator expects your Redux store as first parameter');
+    throw new Error('vdxPluginCreator expects Redux store as first parameter');
   }
-  if (typeof actionTypes !== 'object') {
-    throw new Error('vdxPluginCreator expects OBJECT with Action Type Constants as second parameter');
+  if (!actionTypes  || Object.keys(actionTypes).length<1) {
+    throw new Error('vdxPluginCreator expects Action Type Object Constants as second parameter');
   }
 
   const reduxActions = {};
