@@ -13,8 +13,11 @@ function vdxPluginCreator(reduxStore, actionTypes) {
     reduxMutations[type] = (state, action) => { }; // Register Action
 
     reduxActions[type] = ({ dispatch, commit }, action) => {
-      reduxStore.dispatch(Object.assign({}, action, { type }));
+      const res = reduxStore.dispatch(Object.assign({}, action, { type }));
+
       commit(type, action);
+
+      return res;
     };
   });
 
@@ -27,11 +30,15 @@ function vdxPluginCreator(reduxStore, actionTypes) {
 
     const next = store.dispatch;
     store.dispatch = function (...args) {
+      let res;
+      
       if (typeof args[0] === 'function') {
-        args[0](next, store.state, ...args.slice(1));
+        res = args[0](next, store.state, ...args.slice(1));
       } else { 
-        next(...args);
-      }
+        res = next(...args);
+      };
+
+      return res;
     };
 
     function updateVuex() {
