@@ -1,39 +1,23 @@
-function vdxPluginCreator(reduxStore, actionTypes, actionCreators) {
-  if (arguments.length < 2) {
-    throw new Error('vdxPluginCreator missing neccesary parameters.');
-  }
+function vdxPluginCreator(reduxStore, actionTypes) {
   if (!reduxStore.dispatch) {
     throw new Error('vdxPluginCreator expects Redux store as first parameter');
   }
-  if (!actionTypes  || Object.keys(actionTypes).length<1) {
+  if (!actionTypes || Object.keys(actionTypes).length<1) {
     throw new Error('vdxPluginCreator expects Action Type Object Constants as second parameter');
   }
 
   const reduxActions = {};
   const reduxMutations = {};
-  const isCreator = typeof actionCreators == 'object';
 
   Object.keys(actionTypes).forEach((type) => {
-    let currentType = type;
-
-
     reduxMutations[type] = (state, action) => { }; // Register Action
 
-    if (isCreator) {
-      Object.keys(actionCreators).forEach((actionCreator) => {
-        if (actionCreators[actionCreator].toString().includes(type)) {
-          currentType = actionCreator;
-        };
-      });
-    };
+    reduxActions[type] = ({ dispatch, commit }, action) => {
+      const res = reduxStore.dispatch(Object.assign({}, action, { type }));
 
-    reduxActions[currentType] = function({ dispatch, commit }, action) {
-      const args_ = arguments
-      const [temp, ...newArguments] = args_;
-      const _args_ = isCreator ? actionCreators[currentType](...newArguments) : Object.assign({}, action, { type });
+      commit(type, action);
 
-      reduxStore.dispatch(_args_);
-      commit(type, _args_);
+      return res;
     };
   });
 
@@ -46,11 +30,15 @@ function vdxPluginCreator(reduxStore, actionTypes, actionCreators) {
 
     const next = store.dispatch;
     store.dispatch = function (...args) {
+      let res;
+      
       if (typeof args[0] === 'function') {
-        args[0](next, store.state, ...args.slice(1));
+        res = args[0](next, store.state, ...args.slice(1));
       } else { 
-        next(...args);
-      }
+        res = next(...args);
+      };
+
+      return res;
     };
 
     function updateVuex() {
